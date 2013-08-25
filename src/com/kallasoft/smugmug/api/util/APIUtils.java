@@ -16,12 +16,11 @@ package com.kallasoft.smugmug.api.util;
 
 import java.io.InputStream;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import util.Base64;
 
 import com.kallasoft.smugmug.api.json.Method;
 
@@ -154,7 +153,7 @@ public class APIUtils {
 		logger.debug("Attempting to Base-64 encode the given image data...");
 
 		try {
-			encodedData = Base64.encodeToString(data, false);
+			encodedData = Base64.encodeBase64String(data);
 			logger.debug(
 					"Successfully Base64-encoded the byte array, length: {}",
 					Integer.toString(encodedData.length()));
