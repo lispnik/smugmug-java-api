@@ -276,15 +276,15 @@ public class Create extends AbstractMethod {
 	public CreateResponse execute(String url, String apiKey, String sessionID,
 			String albumTemplateName, Boolean geography, Boolean exif,
 			Boolean clean, Boolean header, Boolean filenames,
-			Integer templateID, String sortMethod, Boolean sortDirection,
+			Long templateID, String sortMethod, Boolean sortDirection,
 			Integer position, String password, String passwordHint,
 			Boolean isProtected, Boolean isPublic, Boolean hideOwner,
 			Boolean external, Boolean smugSearchable, Boolean worldSearchable,
 			Boolean larges, Boolean xLarges, Boolean x2Larges,
 			Boolean x3Larges, Boolean originals, Boolean watermarking,
-			Integer watermarkID, Boolean share, Boolean canRank,
+			Long watermarkID, Boolean share, Boolean canRank,
 			Boolean comments, Boolean familyEdit, Boolean friendEdit,
-			Integer communityID, Boolean printable, Integer proofDays,
+			Long communityID, Boolean printable, Integer proofDays,
 			String backprinting, Boolean defaultColor, Float unsharpAmount,
 			Float unsharpRadius, Float unsharpThreshold, Float unsharpSigma) {
 		return execute(url, new String[] { apiKey, sessionID,
@@ -320,7 +320,7 @@ public class Create extends AbstractMethod {
 	 * @version 1.2.1
 	 */
 	public class CreateResponse extends AbstractResponse {
-		private Integer albumTemplateID;
+		private Long albumTemplateID;
 
 		/**
 		 * Construct a response by parsing the necessary values out of the JSON
@@ -344,7 +344,7 @@ public class Create extends AbstractMethod {
 
 			try {
 				responseObject = new JSONObject(responseText);
-				albumTemplateID = JSONUtils.getIntegerSafely(responseObject
+				albumTemplateID = JSONUtils.getLongSafely(responseObject
 						.getJSONObject("AlbumTemplate"), "id");
 			} catch (JSONException e) {
 				RuntimeJSONException rje = new RuntimeJSONException(e);
@@ -364,7 +364,7 @@ public class Create extends AbstractMethod {
 		 * 
 		 * @return the ID of the album template that was created.
 		 */
-		public Integer getAlbumTemplateID() {
+		public Long getAlbumTemplateID() {
 			return albumTemplateID;
 		}
 	}

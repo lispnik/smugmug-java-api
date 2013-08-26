@@ -116,7 +116,7 @@ public class GetInfo extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetInfoResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String albumKey) {
+			Long albumID, String albumKey) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), albumKey });
 	}
@@ -149,7 +149,7 @@ public class GetInfo extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetInfoResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String albumKey, String password,
+			Long albumID, String albumKey, String password,
 			String sitePassword) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), albumKey, password, sitePassword });

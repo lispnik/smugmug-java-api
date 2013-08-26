@@ -74,14 +74,14 @@ public class Upload extends com.kallasoft.smugmug.api.json.v1_2_0.images.Upload 
 
 	@Override
 	public UploadResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String fileName, InputStream inputStream) {
+			Long albumID, String fileName, InputStream inputStream) {
 		return execute(url, apiKey, sessionID, albumID, fileName, inputStream,
 				null, null, null, null, null);
 	}
 
 	@Override
 	public UploadResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String fileName, InputStream inputStream,
+			Long albumID, String fileName, InputStream inputStream,
 			String caption, String keywords, Double latitude, Double longitude,
 			Double altitude) throws IllegalArgumentException, RuntimeException {
 		return execute(url, prepareUploadArgumentValues(apiKey,

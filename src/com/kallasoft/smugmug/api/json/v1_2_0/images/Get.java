@@ -119,7 +119,7 @@ public class Get extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String albumKey) {
+			Long albumID, String albumKey) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), albumKey });
 	}
@@ -152,7 +152,7 @@ public class Get extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String albumKey, Boolean heavy) {
+			Long albumID, String albumKey, Boolean heavy) {
 		return execute(url,
 				new String[] { apiKey, sessionID, APIUtils.toString(albumID),
 						albumKey, APIUtils.toString(heavy) });
@@ -191,7 +191,7 @@ public class Get extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String albumKey, Boolean heavy, String password,
+			Long albumID, String albumKey, Boolean heavy, String password,
 			String sitePassword) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), albumKey, APIUtils.toString(heavy),

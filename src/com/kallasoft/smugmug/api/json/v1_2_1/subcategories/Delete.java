@@ -55,7 +55,7 @@ public class Delete extends
 
 	@Override
 	public DeleteResponse execute(String url, String apiKey, String sessionID,
-			Integer subCategoryID) {
+			Long subCategoryID) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(subCategoryID) });
 	}

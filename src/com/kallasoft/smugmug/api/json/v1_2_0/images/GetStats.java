@@ -116,7 +116,7 @@ public class GetStats extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetStatsResponse execute(String url, String apiKey,
-			String sessionID, Integer imageID, Integer month) {
+			String sessionID, Long imageID, Integer month) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), APIUtils.toString(month) });
 	}

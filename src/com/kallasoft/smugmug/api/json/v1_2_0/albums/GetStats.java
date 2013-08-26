@@ -125,7 +125,7 @@ public class GetStats extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetStatsResponse execute(String url, String apiKey,
-			String sessionID, Integer albumID, Integer month, Integer year) {
+			String sessionID, Long albumID, Integer month, Integer year) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), APIUtils.toString(month),
 				APIUtils.toString(year) });
@@ -163,7 +163,7 @@ public class GetStats extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetStatsResponse execute(String url, String apiKey,
-			String sessionID, Integer albumID, Integer month, Integer year,
+			String sessionID, Long albumID, Integer month, Integer year,
 			Boolean heavy) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), APIUtils.toString(month),

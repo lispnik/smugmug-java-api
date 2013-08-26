@@ -15,13 +15,22 @@ public class JSONUtils {
 		return (result == null ? null : (Boolean) result);
 	}
 
-	public static Integer getIntegerSafely(JSONObject jsonObject,
-			String propertyName) {
-		Object result = getPropertySafely(jsonObject, propertyName);
-		return (result == null ? null : (Integer) result);
-	}
+    public static Long getLongSafely(JSONObject jsonObject,
+                                           String propertyName) {
+        Object result = getPropertySafely(jsonObject, propertyName);
+        if (result instanceof Integer) {
+            return ((Integer) result).longValue();
+        }
+        return (result == null ? null : (Long) result);
+    }
 
-	public static Float getFloatSafely(JSONObject jsonObject,
+    public static Integer getIntegerSafely(JSONObject jsonObject,
+                                           String propertyName) {
+        Object result = getPropertySafely(jsonObject, propertyName);
+        return (result == null ? null : (Integer) result);
+    }
+
+    public static Float getFloatSafely(JSONObject jsonObject,
 			String propertyName) {
 		Double result = getDoubleSafely(jsonObject, propertyName);
 		return (result == null ? null : Float.valueOf((float) result

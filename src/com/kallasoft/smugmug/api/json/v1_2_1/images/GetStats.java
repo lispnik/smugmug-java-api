@@ -54,7 +54,7 @@ public class GetStats extends
 
 	@Override
 	public GetStatsResponse execute(String url, String apiKey,
-			String sessionID, Integer imageID, Integer month) {
+			String sessionID, Long imageID, Integer month) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), APIUtils.toString(month) });
 	}

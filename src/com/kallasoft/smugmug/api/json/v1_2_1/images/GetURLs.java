@@ -54,20 +54,20 @@ public class GetURLs extends
 
 	@Override
 	public GetURLsResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID, String imageKey) {
+			Long imageID, String imageKey) {
 		return execute(url, apiKey, sessionID, imageID, imageKey, null);
 	}
 
 	@Override
 	public GetURLsResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID, String imageKey, Integer templateID) {
+			Long imageID, String imageKey, Long templateID) {
 		return execute(url, apiKey, sessionID, imageID, imageKey, templateID,
 				null, null);
 	}
 
 	@Override
 	public GetURLsResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID, String imageKey, Integer templateID,
+			Long imageID, String imageKey, Long templateID,
 			String password, String sitePassword) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), imageKey,

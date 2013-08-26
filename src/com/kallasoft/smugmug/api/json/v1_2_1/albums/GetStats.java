@@ -54,13 +54,13 @@ public class GetStats extends
 
 	@Override
 	public GetStatsResponse execute(String url, String apiKey,
-			String sessionID, Integer albumID, Integer month, Integer year) {
+			String sessionID, Long albumID, Integer month, Integer year) {
 		return execute(url, apiKey, sessionID, albumID, month, year, null);
 	}
 
 	@Override
 	public GetStatsResponse execute(String url, String apiKey,
-			String sessionID, Integer albumID, Integer month, Integer year,
+			String sessionID, Long albumID, Integer month, Integer year,
 			Boolean heavy) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), APIUtils.toString(month),

@@ -120,7 +120,7 @@ public class GetURLs extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetURLsResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID, String imageKey) {
+			Long imageID, String imageKey) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), imageKey });
 	}
@@ -150,7 +150,7 @@ public class GetURLs extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetURLsResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID, String imageKey, Integer templateID) {
+			Long imageID, String imageKey, Long templateID) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), imageKey,
 				APIUtils.toString(templateID) });
@@ -185,7 +185,7 @@ public class GetURLs extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetURLsResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID, String imageKey, Integer templateID,
+			Long imageID, String imageKey, Long templateID,
 			String password, String sitePassword) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), imageKey,
@@ -200,7 +200,7 @@ public class GetURLs extends AbstractMethod {
 	 * @version 1.2.0
 	 */
 	public class GetURLsResponse extends AbstractResponse {
-		private Integer id;
+		private Long id;
 
 		private String albumURL;
 
@@ -255,7 +255,7 @@ public class GetURLs extends AbstractMethod {
 				responseObject = new JSONObject(responseText);
 				JSONObject imageObject = responseObject.getJSONObject("Image");
 
-				id = JSONUtils.getIntegerSafely(imageObject, "id");
+				id = JSONUtils.getLongSafely(imageObject, "id");
 				albumURL = JSONUtils.getStringSafely(imageObject, "AlbumURL");
 				tinyURL = JSONUtils.getStringSafely(imageObject, "TinyURL");
 				thumbURL = JSONUtils.getStringSafely(imageObject, "ThumbURL");
@@ -304,7 +304,7 @@ public class GetURLs extends AbstractMethod {
 		 * 
 		 * @return the image ID.
 		 */
-		public Integer getID() {
+		public Long getID() {
 			return id;
 		}
 

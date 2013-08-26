@@ -53,7 +53,7 @@ public class Create extends com.kallasoft.smugmug.api.json.v1_2_0.albums.Create 
 
 	@Override
 	public CreateResponse execute(String url, String apiKey, String sessionID,
-			String title, Integer categoryID) {
+			String title, Long categoryID) {
 		return execute(url, apiKey, sessionID, title, null, null, categoryID,
 				null, null, null, null, null, null, null, null, null, null,
 				null, null, null, null, null, null, null, null, null, null,
@@ -65,18 +65,18 @@ public class Create extends com.kallasoft.smugmug.api.json.v1_2_0.albums.Create 
 	@Override
 	public CreateResponse execute(String url, String apiKey, String sessionID,
 			String title, String description, String keywords,
-			Integer categoryID, Integer subCategoryID, Boolean geography,
-			Integer albumTemplateID, Boolean exif, Boolean clean,
-			Boolean header, Boolean filenames, Integer templateID,
+			Long categoryID, Long subCategoryID, Boolean geography,
+			Long albumTemplateID, Boolean exif, Boolean clean,
+			Boolean header, Boolean filenames, Long templateID,
 			String sortMethod, Boolean sortDirection, Integer position,
 			Boolean squareThumbs, String password, String passwordHint,
 			Boolean isProtected, Boolean isPublic, Boolean hideOwner,
 			Boolean external, Boolean smugSearchable, Boolean worldSearchable,
 			Boolean larges, Boolean xLarges, Boolean x2Larges,
 			Boolean x3Larges, Boolean originals, Boolean watermarking,
-			Integer watermarkID, Boolean share, Boolean canRank,
+			Long watermarkID, Boolean share, Boolean canRank,
 			Boolean comments, Boolean familyEdit, Boolean friendEdit,
-			Integer communityID, Boolean printable, Integer proofDays,
+			Long communityID, Boolean printable, Integer proofDays,
 			String backprinting, Boolean defaultColor, Float unsharpAmount,
 			Float unsharpRadius, Float unsharpThreshold, Float unsharpSigma) {
 		return execute(url, new String[] { apiKey, sessionID, title,

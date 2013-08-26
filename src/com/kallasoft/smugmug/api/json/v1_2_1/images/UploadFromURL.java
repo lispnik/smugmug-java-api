@@ -55,14 +55,14 @@ public class UploadFromURL extends
 
 	@Override
 	public UploadFromURLResponse execute(String url, String apiKey,
-			String sessionID, Integer albumID, String imageURL) {
+			String sessionID, Long albumID, String imageURL) {
 		return execute(url, apiKey, sessionID, albumID, imageURL, null, null,
 				null, null, null, null, null);
 	}
 
 	@Override
 	public UploadFromURLResponse execute(String url, String apiKey,
-			String sessionID, Integer albumID, String imageURL,
+			String sessionID, Long albumID, String imageURL,
 			Integer byteCount, String md5Sum, String caption, String keywords,
 			Double latitude, Double longitude, Double altitude) {
 		return execute(url, new String[] { apiKey, sessionID,

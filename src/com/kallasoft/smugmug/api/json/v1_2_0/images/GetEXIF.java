@@ -119,7 +119,7 @@ public class GetEXIF extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetEXIFResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID, String imageKey) {
+			Long imageID, String imageKey) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), imageKey });
 	}
@@ -150,7 +150,7 @@ public class GetEXIF extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetEXIFResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID, String imageKey, String password,
+			Long imageID, String imageKey, String password,
 			String sitePassword) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), imageKey, password, sitePassword });
@@ -164,7 +164,7 @@ public class GetEXIF extends AbstractMethod {
 	 * @version 1.2.0
 	 */
 	public class GetEXIFResponse extends AbstractResponse {
-		private Integer id;
+		private Long id;
 
 		private String dateTime;
 
@@ -247,7 +247,7 @@ public class GetEXIF extends AbstractMethod {
 				responseObject = new JSONObject(responseText);
 				JSONObject imageObject = responseObject.getJSONObject("Image");
 
-				id = JSONUtils.getIntegerSafely(imageObject, "id");
+				id = JSONUtils.getLongSafely(imageObject, "id");
 				dateTime = JSONUtils.getStringSafely(imageObject, "DateTime");
 				dateTimeOriginal = JSONUtils.getStringSafely(imageObject,
 						"DateTimeOriginal");
@@ -334,7 +334,7 @@ public class GetEXIF extends AbstractMethod {
 		 * 
 		 * @return the image ID.
 		 */
-		public Integer getID() {
+		public Long getID() {
 			return id;
 		}
 

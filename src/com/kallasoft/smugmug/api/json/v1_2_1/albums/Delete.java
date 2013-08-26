@@ -53,7 +53,7 @@ public class Delete extends com.kallasoft.smugmug.api.json.v1_2_0.albums.Delete 
 
 	@Override
 	public DeleteResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID) {
+			Long albumID) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID) });
 	}

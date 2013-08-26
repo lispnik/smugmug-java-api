@@ -34,43 +34,42 @@ public class Album {
 	/**
 	 * Used to define the Viewer Choice (0) template ID.
 	 */
-	public static final Integer TEMPLATE_ID_VIEWER_CHOICE = Integer.valueOf(0);
+	public static final Long TEMPLATE_ID_VIEWER_CHOICE = 0L;
 
 	/**
 	 * Used to define the SmugMug (3) template ID.
 	 */
-	public static final Integer TEMPLATE_ID_SMUG_MUG = Integer.valueOf(3);
+	public static final Long TEMPLATE_ID_SMUG_MUG = 3L;
 
 	/**
 	 * Used to define the Traditional (4) template ID.
 	 */
-	public static final Integer TEMPLATE_ID_TRADITIONAL = Integer.valueOf(4);
+	public static final Long TEMPLATE_ID_TRADITIONAL = 4L;
 
 	/**
 	 * Used to define the All Thumbs (7) template ID.
 	 */
-	public static final Integer TEMPLATE_ID_ALL_THUMBS = Integer.valueOf(7);
+	public static final Long TEMPLATE_ID_ALL_THUMBS = 7L;
 
 	/**
 	 * Used to define the Slideshow (8) template ID.
 	 */
-	public static final Integer TEMPLATE_ID_SLIDESHOW = Integer.valueOf(8);
+	public static final Long TEMPLATE_ID_SLIDESHOW = 8L;
 
 	/**
 	 * Used to define the Journal (9) template ID.
 	 */
-	public static final Integer TEMPLATE_ID_JOURNAL = Integer.valueOf(9);
+	public static final Long TEMPLATE_ID_JOURNAL = 9L;
 
 	/**
 	 * Used to define the SmugMug Small (10) template ID.
 	 */
-	public static final Integer TEMPLATE_ID_SMUG_MUG_SMALL = Integer
-			.valueOf(10);
+	public static final Long TEMPLATE_ID_SMUG_MUG_SMALL = 10L;
 
 	/**
 	 * Used to define the Filmstrip (11) template ID.
 	 */
-	public static final Integer TEMPLATE_ID_FILMSTRIP = Integer.valueOf(11);
+	public static final Long TEMPLATE_ID_FILMSTRIP = 11L;
 
 	/**
 	 * Used to define the "Position" sort method.
@@ -124,7 +123,7 @@ public class Album {
 
 	/* Required fields */
 
-	private Integer id;
+	private Long id;
 
 	private String albumKey;
 
@@ -142,7 +141,7 @@ public class Album {
 
 	private Boolean geography;
 
-	private Integer albumTemplateID;
+	private Long albumTemplateID;
 
 	/* Look and Feel fields */
 
@@ -154,7 +153,7 @@ public class Album {
 
 	private Boolean filenames;
 
-	private Integer templateID;
+	private Long templateID;
 
 	private String sortMethod;
 
@@ -200,7 +199,7 @@ public class Album {
 
 	private Boolean watermarking;
 
-	private Integer watermarkID;
+	private Long watermarkID;
 
 	/* Social fields */
 
@@ -216,7 +215,7 @@ public class Album {
 
 	/* Community fields */
 
-	private Integer communityID;
+	private Long communityID;
 
 	/* Printing & Sales fields */
 
@@ -264,7 +263,7 @@ public class Album {
 			return;
 
 		/* Parse required fields */
-		id = JSONUtils.getIntegerSafely(albumObject, "id");
+		id = JSONUtils.getLongSafely(albumObject, "id");
 		albumKey = JSONUtils.getStringSafely(albumObject, "Key");
 		title = JSONUtils.getStringSafely(albumObject, "Title");
 
@@ -279,7 +278,7 @@ public class Album {
 			subCategory = new Category(albumObject.getJSONObject("SubCategory"));
 
 		geography = JSONUtils.getBooleanSafely(albumObject, "Geography");
-		albumTemplateID = JSONUtils.getIntegerSafely(albumObject,
+		albumTemplateID = JSONUtils.getLongSafely(albumObject,
 				"AlbumTemplateID");
 
 		/* Parse look & feel fields */
@@ -289,7 +288,7 @@ public class Album {
 		filenames = JSONUtils.getBooleanSafely(albumObject, "Filenames");
 
 		if (!albumObject.isNull("Template"))
-			templateID = JSONUtils.getIntegerSafely(albumObject
+			templateID = JSONUtils.getLongSafely(albumObject
 					.getJSONObject("Template"), "id");
 
 		sortMethod = JSONUtils.getStringSafely(albumObject, "SortMethod");
@@ -323,8 +322,8 @@ public class Album {
 		watermarking = JSONUtils.getBooleanSafely(albumObject, "Watermarking");
 
 		if (!albumObject.isNull("Watermark"))
-			watermarkID = JSONUtils.getIntegerSafely(albumObject
-					.getJSONObject("Watermark"), "id");
+			watermarkID = JSONUtils.getLongSafely(albumObject
+                    .getJSONObject("Watermark"), "id");
 
 		/* Parse social fields */
 		share = JSONUtils.getBooleanSafely(albumObject, "Share");
@@ -335,8 +334,8 @@ public class Album {
 
 		/* Parse community fields */
 		if (!albumObject.isNull("Community"))
-			communityID = JSONUtils.getIntegerSafely(albumObject
-					.getJSONObject("Community"), "id");
+			communityID = JSONUtils.getLongSafely(albumObject
+                    .getJSONObject("Community"), "id");
 
 		/* Parse printing & sales fields */
 		printable = JSONUtils.getBooleanSafely(albumObject, "Printable");
@@ -533,20 +532,20 @@ public class Album {
 	 * @param lastUpdated
 	 *            The date when the album was last updated.
 	 */
-	public Album(Integer id, String albumKey, String title, String description,
+	public Album(Long id, String albumKey, String title, String description,
 			String keywords, Category category, Category subCategory,
-			Boolean geography, Integer albumTemplateID, Boolean exif,
+			Boolean geography, Long albumTemplateID, Boolean exif,
 			Boolean clean, Boolean header, Boolean filenames,
-			Integer templateID, String sortMethod, Boolean sortDirection,
+			Long templateID, String sortMethod, Boolean sortDirection,
 			Integer position, Integer imageCount, Image highlight,
 			Boolean squareThumbs, String password, String passwordHint,
 			Boolean passworded, Boolean isProtected, Boolean isPublic,
 			Boolean hideOwner, Boolean external, Boolean smugSearchable,
 			Boolean worldSearchable, Boolean larges, Boolean xLarges,
 			Boolean x2Larges, Boolean x3Larges, Boolean originals,
-			Boolean watermarking, Integer watermarkID, Boolean share,
+			Boolean watermarking, Long watermarkID, Boolean share,
 			Boolean canRank, Boolean comments, Boolean familyEdit,
-			Boolean friendEdit, Integer communityID, Boolean printable,
+			Boolean friendEdit, Long communityID, Boolean printable,
 			Integer proofDays, String backprinting, Boolean defaultColor,
 			Float unsharpAmount, Float unsharpRadius, Float unsharpThreshold,
 			Float unsharpSigma, String lastUpdated) {
@@ -662,7 +661,7 @@ public class Album {
 	 * 
 	 * @return the ID of the album.
 	 */
-	public Integer getID() {
+	public Long getID() {
 		return id;
 	}
 
@@ -736,7 +735,7 @@ public class Album {
 	 * 
 	 * @return the ID of the album template used to configure this album.
 	 */
-	public Integer getAlbumTemplateID() {
+	public Long getAlbumTemplateID() {
 		return albumTemplateID;
 	}
 
@@ -799,7 +798,7 @@ public class Album {
 	 * 
 	 * @return the ID of the template that will be used to display the album.
 	 */
-	public Integer getTemplateID() {
+	public Long getTemplateID() {
 		return templateID;
 	}
 
@@ -1037,7 +1036,7 @@ public class Album {
 	 * 
 	 * @return the ID of the watermark that will be used on the images.
 	 */
-	public Integer getWatermarkID() {
+	public Long getWatermarkID() {
 		return watermarkID;
 	}
 
@@ -1099,7 +1098,7 @@ public class Album {
 	 * 
 	 * @return the ID of the community that this album belongs to.
 	 */
-	public Integer getCommunityID() {
+	public Long getCommunityID() {
 		return communityID;
 	}
 

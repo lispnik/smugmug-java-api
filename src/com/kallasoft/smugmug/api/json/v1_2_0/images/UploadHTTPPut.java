@@ -66,7 +66,7 @@ import com.kallasoft.smugmug.api.util.APIUtils;
  * The call-structure of this class is that all the execute convenience methods
  * will eventually delegate to {@link #execute(String, String[], byte[])} (after
  * possibly making use of
- * {@link #prepareUploadArgumentValues(byte[], String, Integer, Integer, String, String, String, Double, Double, Double)}
+ * {@link #prepareUploadArgumentValues(byte[], String, Long, Long, String, String, String, Double, Double, Double)}
  * to prepare arguments for them) which itself will setup the HTTP Headers with
  * {@link #setupHTTPHeaders(PutMethod, String[])} and then eventually finish off
  * the request by calling into
@@ -91,7 +91,7 @@ public class UploadHTTPPut extends AbstractMethod {
 	 * overriding any values previously set and passed in.
 	 * <p>
 	 * Additional convenience methods like
-	 * {@link #execute(String, String, Integer, Integer, String, InputStream)}
+	 * {@link #execute(String, String, Long, Long, String, java.io.InputStream)}
 	 * will automatically set more headers such as Content-Length and
 	 * Content-MD5 after loading the image. Be sure to check the respective
 	 * method's documentation to see which headers are automatically being set
@@ -155,9 +155,8 @@ public class UploadHTTPPut extends AbstractMethod {
 	 *             <code>execute</code> methods to perform an upload.
 	 * 
 	 * @see #execute(String, String[], byte[])
-	 * @see #execute(String, String, Integer, Integer, String, InputStream)
-	 * @see #execute(String, String, Integer, Integer, String, InputStream,
-	 *      String, String, Double, Double, Double)
+	 * @see #execute(String, String, Long, Long, String, java.io.InputStream)
+	 * @see #execute(String, String, Long, Long, String, java.io.InputStream, String, String, Double, Double, Double)
 	 */
 	public AbstractResponse execute(@SuppressWarnings("unused")
 	String url, @SuppressWarnings("unused")
@@ -259,7 +258,7 @@ public class UploadHTTPPut extends AbstractMethod {
 
 	/**
 	 * Convenience method that delegates to
-	 * {@link #execute(String, String, Integer, Integer, String, InputStream, String, String, Double, Double, Double)}.
+	 * {@link #execute(String, String, Long, Long, String, java.io.InputStream, String, String, Double, Double, Double)}.
 	 * <p>
 	 * Only one argument of either "X-Smug-AlbumID" (httpHeaderValues[5]) or
 	 * "X-Smug-ImageID" (httpHeaderValues[6]) can be specified. If
@@ -298,7 +297,7 @@ public class UploadHTTPPut extends AbstractMethod {
 	 * @see #HTTP_HEADERS
 	 */
 	public UploadHTTPPutResponse execute(String url, String sessionID,
-			Integer albumID, Integer imageID, String fileName,
+			Long albumID, Long imageID, String fileName,
 			InputStream inputStream) {
 		return execute(url, sessionID, albumID, imageID, fileName, inputStream,
 				null, null, null, null, null);
@@ -363,7 +362,7 @@ public class UploadHTTPPut extends AbstractMethod {
 	 * @see #HTTP_HEADERS
 	 */
 	public UploadHTTPPutResponse execute(String url, String sessionID,
-			Integer albumID, Integer imageID, String fileName,
+			Long albumID, Long imageID, String fileName,
 			InputStream inputStream, String caption, String keywords,
 			Double latitude, Double longitude, Double altitude)
 			throws IllegalArgumentException, RuntimeException {
@@ -430,7 +429,7 @@ public class UploadHTTPPut extends AbstractMethod {
 	 *             the real exception that describes the failure.
 	 */
 	protected String[] prepareUploadArgumentValues(byte[] imageData,
-			String sessionID, Integer albumID, Integer imageID,
+			String sessionID, Long albumID, Long imageID,
 			String fileName, String caption, String keywords, Double latitude,
 			Double longitude, Double altitude) throws RuntimeException {
 		if (imageData == null)
@@ -723,7 +722,7 @@ public class UploadHTTPPut extends AbstractMethod {
 	 * @version 1.2.0
 	 */
 	public class UploadHTTPPutResponse extends AbstractResponse {
-		private Integer imageID;
+		private Long imageID;
 
 		private String imageKey;
 
@@ -756,7 +755,7 @@ public class UploadHTTPPut extends AbstractMethod {
 					JSONObject imageObject = responseObject
 							.getJSONObject("Image");
 
-					imageID = JSONUtils.getIntegerSafely(imageObject, "id");
+					imageID = JSONUtils.getLongSafely(imageObject, "id");
 					imageKey = JSONUtils.getStringSafely(imageObject, "Key");
 				}
 			} catch (JSONException e) {
@@ -778,7 +777,7 @@ public class UploadHTTPPut extends AbstractMethod {
 		 * 
 		 * @return the ID of the image that was uploaded.
 		 */
-		public Integer getImageID() {
+		public Long getImageID() {
 			return imageID;
 		}
 

@@ -54,13 +54,13 @@ public class GetEXIF extends
 
 	@Override
 	public GetEXIFResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID, String imageKey) {
+			Long imageID, String imageKey) {
 		return execute(url, apiKey, sessionID, imageID, imageKey, null, null);
 	}
 
 	@Override
 	public GetEXIFResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID, String imageKey, String password,
+			Long imageID, String imageKey, String password,
 			String sitePassword) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), imageKey, password, sitePassword });

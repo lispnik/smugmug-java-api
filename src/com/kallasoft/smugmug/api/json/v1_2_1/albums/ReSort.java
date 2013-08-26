@@ -53,7 +53,7 @@ public class ReSort extends com.kallasoft.smugmug.api.json.v1_2_0.albums.ReSort 
 
 	@Override
 	public ReSortResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String by, String direction) {
+			Long albumID, String by, String direction) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), by, direction });
 	}

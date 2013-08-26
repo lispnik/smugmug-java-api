@@ -105,7 +105,7 @@ public class ApplyWatermark extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public ApplyWatermarkResponse execute(String url, String apiKey,
-			String sessionID, Integer albumID, Integer watermarkID) {
+			String sessionID, Long albumID, Long watermarkID) {
 		return execute(url, new String[] { apiKey, sessionID, null,
 				APIUtils.toString(albumID), APIUtils.toString(watermarkID) });
 	}

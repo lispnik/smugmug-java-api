@@ -16,7 +16,7 @@ import com.kallasoft.smugmug.api.json.util.JSONUtils;
  * @author Riyad Kalla
  */
 public class AlbumTransferStats {
-	private Integer id;
+	private Long id;
 
 	private Integer bytes;
 
@@ -72,7 +72,7 @@ public class AlbumTransferStats {
 			throw new IllegalArgumentException("albumObject cannot be null");
 
 		/* Parse all the values */
-		id = JSONUtils.getIntegerSafely(albumObject, "id");
+		id = JSONUtils.getLongSafely(albumObject, "id");
 		bytes = JSONUtils.getIntegerSafely(albumObject, "Bytes");
 		tiny = JSONUtils.getIntegerSafely(albumObject, "Tiny");
 		thumb = JSONUtils.getIntegerSafely(albumObject, "Thumb");
@@ -148,7 +148,7 @@ public class AlbumTransferStats {
 	 *            A list of image transfer stat objects that represent the
 	 *            images in this album, if available.
 	 */
-	public AlbumTransferStats(Integer id, Integer bytes, Integer tiny,
+	public AlbumTransferStats(Long id, Integer bytes, Integer tiny,
 			Integer thumb, Integer small, Integer medium, Integer large,
 			Integer xLarge, Integer x2Large, Integer x3Large, Float original,
 			Float video320, Float video640, Float video960, Float video1280,
@@ -187,7 +187,7 @@ public class AlbumTransferStats {
 	 * 
 	 * @return the album ID.
 	 */
-	public Integer getID() {
+	public Long getID() {
 		return id;
 	}
 

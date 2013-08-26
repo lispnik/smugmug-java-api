@@ -97,7 +97,7 @@ public class Delete extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public DeleteResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID) {
+			Long albumID) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID) });
 	}

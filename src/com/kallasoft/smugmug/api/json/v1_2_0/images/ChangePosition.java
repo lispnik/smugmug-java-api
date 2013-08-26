@@ -102,7 +102,7 @@ public class ChangePosition extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public ChangePositionResponse execute(String url, String apiKey,
-			String sessionID, Integer imageID, Integer position) {
+			String sessionID, Long imageID, Integer position) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), APIUtils.toString(position) });
 	}

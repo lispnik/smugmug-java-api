@@ -53,20 +53,20 @@ public class Get extends com.kallasoft.smugmug.api.json.v1_2_0.images.Get {
 
 	@Override
 	public GetResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String albumKey) {
+			Long albumID, String albumKey) {
 		return execute(url, apiKey, sessionID, albumID, albumKey, null);
 	}
 
 	@Override
 	public GetResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String albumKey, Boolean heavy) {
+			Long albumID, String albumKey, Boolean heavy) {
 		return execute(url, apiKey, sessionID, albumID, albumKey, heavy, null,
 				null);
 	}
 
 	@Override
 	public GetResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String albumKey, Boolean heavy, String password,
+			Long albumID, String albumKey, Boolean heavy, String password,
 			String sitePassword) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), albumKey, APIUtils.toString(heavy),

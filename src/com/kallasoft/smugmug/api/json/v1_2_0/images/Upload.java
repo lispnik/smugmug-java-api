@@ -45,13 +45,13 @@ import com.kallasoft.smugmug.api.util.APIUtils;
  * <li>{@link #execute(String, String[])} passes it's values directly through,
  * as-is, to the super executeImpl method, wrapping the result in an appropriate
  * response.</li>
- * <li>{@link #execute(String, String, String, Integer, String, InputStream)}
+ * <li>{@link #execute(String, String, String, Long, String, java.io.InputStream)}
  * simply passes it's values, as-is, straight through to
- * {@link #execute(String, String, String, Integer, String, InputStream, String, String, Double, Double, Double)},
+ * {@link #execute(String, String, String, Long, String, java.io.InputStream, String, String, Double, Double, Double)},
  * including <code>null</code> for values that are unknown.</li>
- * <li>{@link #execute(String, String, String, Integer, String, InputStream, String, String, Double, Double, Double)}
+ * <li>{@link #execute(String, String, String, Long, String, java.io.InputStream, String, String, Double, Double, Double)}
  * utilizes
- * {@link #prepareUploadArgumentValues(String, String, Integer, String, InputStream, String, String, Double, Double, Double)}
+ * {@link #prepareUploadArgumentValues(String, String, Long, String, java.io.InputStream, String, String, Double, Double, Double)}
  * to take all the arguments and pre-process them and then assign them,
  * in-order, into a <code>String[]</code> that is immediately passed off to
  * {@link #execute(String, String[])} for execution.</li>
@@ -122,9 +122,8 @@ public class Upload extends AbstractMethod {
 	 * 
 	 * @return the response that includes the ID of the uploaded image.
 	 * 
-	 * @see #execute(String, String, String, Integer, String, InputStream)
-	 * @see #execute(String, String, String, Integer, String, InputStream,
-	 *      String, String, Double, Double, Double)
+	 * @see #execute(String, String, String, Long, String, java.io.InputStream)
+	 * @see #execute(String, String, String, Long, String, java.io.InputStream, String, String, Double, Double, Double)
 	 */
 	public UploadResponse execute(String url, String[] argumentValues) {
 		if (!APIVersionConstants.TEXT_UPLOAD_SERVER_URL.equals(url))
@@ -148,7 +147,7 @@ public class Upload extends AbstractMethod {
 	 * Convenience method used to execute the smugmug.images.upload method.
 	 * <p>
 	 * This method delegates to
-	 * {@link #execute(String, String, String, Integer, String, InputStream, String, String, Double, Double, Double)}.
+	 * {@link #execute(String, String, String, Long, String, java.io.InputStream, String, String, Double, Double, Double)}.
 	 * 
 	 * @param url
 	 *            The URL of the SmugMug server to communicate with. This
@@ -169,11 +168,10 @@ public class Upload extends AbstractMethod {
 	 * @return the response that includes the ID of the uploaded image.
 	 * 
 	 * @see #execute(String, String[])
-	 * @see #execute(String, String, String, Integer, String, InputStream,
-	 *      String, String, Double, Double, Double)
+	 * @see #execute(String, String, String, Long, String, java.io.InputStream, String, String, Double, Double, Double)
 	 */
 	public UploadResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String fileName, InputStream inputStream) {
+			Long albumID, String fileName, InputStream inputStream) {
 		return execute(url, apiKey, sessionID, albumID, fileName, inputStream,
 				null, null, null, null, null);
 	}
@@ -200,7 +198,7 @@ public class Upload extends AbstractMethod {
 	 * before calling {@link #execute(String, String[])}.
 	 * <p>
 	 * <strong>NOTE</strong>: This method uses
-	 * {@link #prepareUploadArgumentValues(String, String, Integer, String, InputStream, String, String, Double, Double, Double)}
+	 * {@link #prepareUploadArgumentValues(String, String, Long, String, java.io.InputStream, String, String, Double, Double, Double)}
 	 * to do the actual preparation of the image data before delegating to
 	 * {@link #execute(String, String[])}.
 	 * 
@@ -233,11 +231,10 @@ public class Upload extends AbstractMethod {
 	 * @return the response that includes the ID of the uploaded image.
 	 * 
 	 * @see #execute(String, String[])
-	 * @see #prepareUploadArgumentValues(String, String, Integer, String,
-	 *      InputStream, String, String, Double, Double, Double)
+	 * @see #prepareUploadArgumentValues(String, String, Long, String, java.io.InputStream, String, String, Double, Double, Double)
 	 */
 	public UploadResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String fileName, InputStream inputStream,
+			Long albumID, String fileName, InputStream inputStream,
 			String caption, String keywords, Double latitude, Double longitude,
 			Double altitude) {
 		return execute(url, prepareUploadArgumentValues(apiKey, sessionID,
@@ -298,7 +295,7 @@ public class Upload extends AbstractMethod {
 	 *             the failure.
 	 */
 	protected String[] prepareUploadArgumentValues(String apiKey,
-			String sessionID, Integer albumID, String fileName,
+			String sessionID, Long albumID, String fileName,
 			InputStream inputStream, String caption, String keywords,
 			Double latitude, Double longitude, Double altitude)
 			throws RuntimeException {
@@ -340,7 +337,7 @@ public class Upload extends AbstractMethod {
 	 * @version 1.2.0
 	 */
 	public class UploadResponse extends AbstractResponse {
-		private Integer imageID;
+		private Long imageID;
 
 		private String imageKey;
 
@@ -372,7 +369,7 @@ public class Upload extends AbstractMethod {
 					JSONObject imageObject = responseObject
 							.getJSONObject("Image");
 
-					imageID = JSONUtils.getIntegerSafely(imageObject, "id");
+					imageID = JSONUtils.getLongSafely(imageObject, "id");
 					imageKey = JSONUtils.getStringSafely(imageObject, "Key");
 				}
 			} catch (JSONException e) {
@@ -394,7 +391,7 @@ public class Upload extends AbstractMethod {
 		 * 
 		 * @return the ID of the uploaded image.
 		 */
-		public Integer getImageID() {
+		public Long getImageID() {
 			return imageID;
 		}
 

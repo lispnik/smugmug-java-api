@@ -55,7 +55,7 @@ public class Rename extends
 
 	@Override
 	public RenameResponse execute(String url, String apiKey, String sessionID,
-			Integer subCategoryID, String name) {
+			Long subCategoryID, String name) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(subCategoryID), name });
 	}

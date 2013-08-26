@@ -68,14 +68,14 @@ public class ChangeSettings extends
 
 	@Override
 	public ChangeSettingsResponse execute(String url, String apiKey,
-			String sessionID, Integer imageID, Integer albumID) {
+			String sessionID, Long imageID, Long albumID) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), APIUtils.toString(albumID) });
 	}
 
 	@Override
 	public ChangeSettingsResponse execute(String url, String apiKey,
-			String sessionID, Integer imageID, String caption, String keywords,
+			String sessionID, Long imageID, String caption, String keywords,
 			Boolean hidden) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), null, caption, keywords,
@@ -83,7 +83,7 @@ public class ChangeSettings extends
 	}
 
 	public ChangeSettingsResponse execute(String url, String apiKey,
-			String sessionID, Integer imageID, String caption, String keywords,
+			String sessionID, Long imageID, String caption, String keywords,
 			Boolean hidden, Double latitude, Double longitude, Integer altitude) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID), null, caption, keywords,

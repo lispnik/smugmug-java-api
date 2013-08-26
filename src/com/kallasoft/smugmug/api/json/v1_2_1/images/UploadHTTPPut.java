@@ -122,7 +122,7 @@ public class UploadHTTPPut extends
 
 	@Override
 	public UploadHTTPPutResponse execute(String url, String sessionID,
-			Integer albumID, Integer imageID, String fileName,
+			Long albumID, Long imageID, String fileName,
 			InputStream inputStream) {
 		return execute(url, sessionID, albumID, imageID, fileName, inputStream,
 				null, null, null, null, null);
@@ -130,7 +130,7 @@ public class UploadHTTPPut extends
 
 	@Override
 	public UploadHTTPPutResponse execute(String url, String sessionID,
-			Integer albumID, Integer imageID, String fileName,
+			Long albumID, Long imageID, String fileName,
 			InputStream inputStream, String caption, String keywords,
 			Double latitude, Double longitude, Double altitude)
 			throws IllegalArgumentException, RuntimeException {

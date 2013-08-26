@@ -11,7 +11,7 @@ import com.kallasoft.smugmug.api.json.util.JSONUtils;
  * @author Riyad Kalla
  */
 public class Image {
-	private Integer id;
+	private Long id;
 
 	private String imageKey;
 
@@ -101,7 +101,7 @@ public class Image {
 		if (imageObject == null)
 			throw new IllegalArgumentException("imageObject cannot be null");
 
-		id = JSONUtils.getIntegerSafely(imageObject, "id");
+		id = JSONUtils.getLongSafely(imageObject, "id");
 		imageKey = JSONUtils.getStringSafely(imageObject, "Key");
 		fileName = JSONUtils.getStringSafely(imageObject, "FileName");
 		caption = JSONUtils.getStringSafely(imageObject, "Caption");
@@ -216,7 +216,7 @@ public class Image {
 	 * @param album
 	 *            The {@link Album} that this image is contained in.
 	 */
-	public Image(Integer id, String imageKey, String fileName, String caption,
+	public Image(Long id, String imageKey, String fileName, String caption,
 			String keywords, Integer position, String date, String format,
 			Integer serial, Boolean watermark, Double latitude,
 			Double longitude, Double altitude, Boolean hidden, Integer size,
@@ -291,7 +291,7 @@ public class Image {
 	 *
 	 * @return the ID of the image.
 	 */
-	public Integer getID() {
+	public Long getID() {
 		return id;
 	}
 

@@ -269,18 +269,18 @@ public class ChangeSettings extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public ChangeSettingsResponse execute(String url, String apiKey,
-			String sessionID, Integer albumTemplateID,
+			String sessionID, Long albumTemplateID,
 			String albumTemplateName, Boolean geography, Boolean exif,
 			Boolean clean, Boolean header, Boolean filenames,
-			Integer templateID, String sortMethod, Boolean sortDirection,
+			Long templateID, String sortMethod, Boolean sortDirection,
 			Integer position, String password, String passwordHint,
 			Boolean isProtected, Boolean isPublic, Boolean hideOwner,
 			Boolean external, Boolean smugSearchable, Boolean worldSearchable,
 			Boolean larges, Boolean xLarges, Boolean x2Larges,
 			Boolean x3Larges, Boolean originals, Boolean watermarking,
-			Integer watermarkID, Boolean share, Boolean canRank,
+			Long watermarkID, Boolean share, Boolean canRank,
 			Boolean comments, Boolean familyEdit, Boolean friendEdit,
-			Integer communityID, Boolean printable, Integer proofDays,
+			Long communityID, Boolean printable, Integer proofDays,
 			String backprinting, Boolean defaultColor, Float unsharpAmount,
 			Float unsharpRadius, Float unsharpThreshold, Float unsharpSigma) {
 		return execute(url, new String[] { apiKey, sessionID,

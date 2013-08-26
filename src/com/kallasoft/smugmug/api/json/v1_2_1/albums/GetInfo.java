@@ -54,13 +54,13 @@ public class GetInfo extends
 
 	@Override
 	public GetInfoResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String albumKey) {
+			Long albumID, String albumKey) {
 		return execute(url, apiKey, sessionID, albumID, albumKey, null, null);
 	}
 
 	@Override
 	public GetInfoResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String albumKey, String password,
+			Long albumID, String albumKey, String password,
 			String sitePassword) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), albumKey, password, sitePassword });

@@ -131,7 +131,7 @@ public class WithHash extends AbstractMethod {
 	 * 
 	 * @see #execute(String, String[])
 	 */
-	public WithHashResponse execute(String url, String apiKey, Integer userID,
+	public WithHashResponse execute(String url, String apiKey, Long userID,
 			String passwordHash) {
 		return execute(url, new String[] { apiKey, APIUtils.toString(userID),
 				passwordHash });

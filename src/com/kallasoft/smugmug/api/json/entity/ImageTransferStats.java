@@ -11,7 +11,7 @@ import com.kallasoft.smugmug.api.json.util.JSONUtils;
  * @author Riyad Kalla
  */
 public class ImageTransferStats {
-	private Integer id;
+	private Long id;
 
 	private Integer bytes;
 
@@ -60,7 +60,7 @@ public class ImageTransferStats {
 		if (imageObject == null)
 			throw new IllegalArgumentException("imageObject cannot be null");
 
-		id = JSONUtils.getIntegerSafely(imageObject, "id");
+		id = JSONUtils.getLongSafely(imageObject, "id");
 		bytes = JSONUtils.getIntegerSafely(imageObject, "Bytes");
 		tiny = JSONUtils.getIntegerSafely(imageObject, "Tiny");
 		thumb = JSONUtils.getIntegerSafely(imageObject, "Thumb");
@@ -124,7 +124,7 @@ public class ImageTransferStats {
 	 *            The number of times 1280-pixel sized movies have been viewed
 	 *            for this album.
 	 */
-	public ImageTransferStats(Integer id, Integer bytes, Integer tiny,
+	public ImageTransferStats(Long id, Integer bytes, Integer tiny,
 			Integer thumb, Integer small, Integer medium, Integer large,
 			Integer xLarge, Integer x2Large, Integer x3Large, Float original,
 			Float video320, Float video640, Float video960, Float video1280) {
@@ -159,7 +159,7 @@ public class ImageTransferStats {
 	 * 
 	 * @return the image ID.
 	 */
-	public Integer getID() {
+	public Long getID() {
 		return id;
 	}
 

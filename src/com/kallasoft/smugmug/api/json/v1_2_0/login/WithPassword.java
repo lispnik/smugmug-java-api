@@ -133,7 +133,7 @@ public class WithPassword extends AbstractMethod {
 	 * @version 1.2.0
 	 */
 	public class WithPasswordResponse extends AbstractResponse {
-		private Integer userID;
+		private Long userID;
 
 		private String sessionID;
 
@@ -175,7 +175,7 @@ public class WithPassword extends AbstractMethod {
 				JSONObject loginObject = responseObject.getJSONObject("Login");
 				JSONObject userObject = loginObject.getJSONObject("User");
 
-				userID = JSONUtils.getIntegerSafely(userObject, "id");
+				userID = JSONUtils.getLongSafely(userObject, "id");
 				nickName = JSONUtils.getStringSafely(userObject, "NickName");
 				displayName = JSONUtils.getStringSafely(userObject,
 						"DisplayName");
@@ -210,7 +210,7 @@ public class WithPassword extends AbstractMethod {
 		 * 
 		 * @return the ID of the logged in user.
 		 */
-		public Integer getUserID() {
+		public Long getUserID() {
 			return userID;
 		}
 

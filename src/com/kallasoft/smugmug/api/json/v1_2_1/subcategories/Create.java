@@ -55,7 +55,7 @@ public class Create extends
 
 	@Override
 	public CreateResponse execute(String url, String apiKey, String sessionID,
-			String name, Integer categoryID) {
+			String name, Long categoryID) {
 		return execute(url, new String[] { apiKey, sessionID, name,
 				APIUtils.toString(categoryID) });
 	}

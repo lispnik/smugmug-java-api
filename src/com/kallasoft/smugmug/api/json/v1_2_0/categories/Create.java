@@ -118,7 +118,7 @@ public class Create extends AbstractMethod {
 	 * @version 1.2.0
 	 */
 	public class CreateResponse extends AbstractResponse {
-		private Integer categoryID;
+		private Long categoryID;
 
 		/**
 		 * Construct a response by parsing the necessary values out of the JSON
@@ -143,7 +143,7 @@ public class Create extends AbstractMethod {
 
 			try {
 				responseObject = new JSONObject(responseText);
-				categoryID = JSONUtils.getIntegerSafely(responseObject
+				categoryID = JSONUtils.getLongSafely(responseObject
 						.getJSONObject("Category"), "id");
 			} catch (JSONException e) {
 				RuntimeJSONException rje = new RuntimeJSONException(e);
@@ -163,7 +163,7 @@ public class Create extends AbstractMethod {
 		 * 
 		 * @return the ID the newly created category.
 		 */
-		public Integer getCategoryID() {
+		public Long getCategoryID() {
 			return categoryID;
 		}
 	}

@@ -21,11 +21,11 @@ import com.kallasoft.smugmug.api.util.APIUtils;
  * @author Riyad Kalla
  */
 public class Category {
-	private Integer id;
+	private Long id;
 
 	private String name;
 
-	private Integer parentCategoryID;
+	private Long parentCategoryID;
 
 	private List<Album> albumList = new ArrayList<Album>();
 
@@ -54,7 +54,7 @@ public class Category {
 			throw new IllegalArgumentException("categoryObject cannot be null");
 
 		/* Parse the known values */
-		id = JSONUtils.getIntegerSafely(categoryObject, "id");
+		id = JSONUtils.getLongSafely(categoryObject, "id");
 		name = JSONUtils.getStringSafely(categoryObject, "Title");
 
 		/*
@@ -67,7 +67,7 @@ public class Category {
 			name = JSONUtils.getStringSafely(categoryObject, "Name");
 
 		if (!categoryObject.isNull("Category"))
-			parentCategoryID = JSONUtils.getIntegerSafely(categoryObject
+			parentCategoryID = JSONUtils.getLongSafely(categoryObject
 					.getJSONObject("Category"), "id");
 
 		/*
@@ -98,7 +98,7 @@ public class Category {
 	 * @param name
 	 *            The name of the category or subcategory.
 	 */
-	public Category(Integer id, String name) {
+	public Category(Long id, String name) {
 		this(id, name, null);
 	}
 
@@ -112,7 +112,7 @@ public class Category {
 	 * @param parentCategoryID
 	 *            The ID of the parent category to this subcategory.
 	 */
-	public Category(Integer id, String name, Integer parentCategoryID) {
+	public Category(Long id, String name, Long parentCategoryID) {
 		this(id, name, parentCategoryID, null, null);
 	}
 
@@ -133,7 +133,7 @@ public class Category {
 	 *            A list of {@link Category} that represent the subcategories of
 	 *            the given category, if any.
 	 */
-	public Category(Integer id, String name, Integer parentCategoryID,
+	public Category(Long id, String name, Long parentCategoryID,
 			List<Album> albumList, List<Category> subCategoryList) {
 		this.id = id;
 		this.name = name;
@@ -155,7 +155,7 @@ public class Category {
 	 * 
 	 * @return the ID of the category or subcategory.
 	 */
-	public Integer getID() {
+	public Long getID() {
 		return id;
 	}
 
@@ -175,7 +175,7 @@ public class Category {
 	 * 
 	 * @return the ID of the parent category of subcategory.
 	 */
-	public Integer getParentCategoryID() {
+	public Long getParentCategoryID() {
 		return parentCategoryID;
 	}
 

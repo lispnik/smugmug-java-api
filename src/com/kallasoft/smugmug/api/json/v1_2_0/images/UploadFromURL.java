@@ -110,7 +110,7 @@ public class UploadFromURL extends AbstractMethod {
 	 * method.
 	 * <p>
 	 * This method delegates to
-	 * {@link #execute(String, String, String, Integer, String, Integer, String, String, String, Double, Double, Double)}.
+	 * {@link #execute(String, String, String, Long, String, Integer, String, String, String, Double, Double, Double)}.
 	 * 
 	 * @param url
 	 *            The URL of the SmugMug server to communicate with. This
@@ -131,7 +131,7 @@ public class UploadFromURL extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public UploadFromURLResponse execute(String url, String apiKey,
-			String sessionID, Integer albumID, String imageURL) {
+			String sessionID, Long albumID, String imageURL) {
 		return execute(url, apiKey, sessionID, albumID, imageURL, null, null,
 				null, null, null, null, null);
 	}
@@ -177,7 +177,7 @@ public class UploadFromURL extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public UploadFromURLResponse execute(String url, String apiKey,
-			String sessionID, Integer albumID, String imageURL,
+			String sessionID, Long albumID, String imageURL,
 			Integer byteCount, String md5Sum, String caption, String keywords,
 			Double latitude, Double longitude, Double altitude) {
 		return execute(url, new String[] { apiKey, sessionID,
@@ -195,7 +195,7 @@ public class UploadFromURL extends AbstractMethod {
 	 * @version 1.2.0
 	 */
 	public class UploadFromURLResponse extends AbstractResponse {
-		private Integer imageID;
+		private Long imageID;
 
 		private String imageKey;
 
@@ -228,7 +228,7 @@ public class UploadFromURL extends AbstractMethod {
 					JSONObject imageObject = responseObject
 							.getJSONObject("Image");
 
-					imageID = JSONUtils.getIntegerSafely(imageObject, "id");
+					imageID = JSONUtils.getLongSafely(imageObject, "id");
 					imageKey = JSONUtils.getStringSafely(imageObject, "Key");
 				}
 			} catch (JSONException e) {
@@ -250,7 +250,7 @@ public class UploadFromURL extends AbstractMethod {
 		 * 
 		 * @return the ID of the uploaded image.
 		 */
-		public Integer getImageID() {
+		public Long getImageID() {
 			return imageID;
 		}
 

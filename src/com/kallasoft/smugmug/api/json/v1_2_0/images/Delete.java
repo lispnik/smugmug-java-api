@@ -99,7 +99,7 @@ public class Delete extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public DeleteResponse execute(String url, String apiKey, String sessionID,
-			Integer imageID) {
+			Long imageID) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(imageID) });
 	}

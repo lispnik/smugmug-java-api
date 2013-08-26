@@ -111,7 +111,7 @@ public class Create extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public CreateResponse execute(String url, String apiKey, String sessionID,
-			String name, Integer categoryID) {
+			String name, Long categoryID) {
 		return execute(url, new String[] { apiKey, sessionID, name,
 				APIUtils.toString(categoryID) });
 	}
@@ -124,7 +124,7 @@ public class Create extends AbstractMethod {
 	 * @version 1.2.0
 	 */
 	public class CreateResponse extends AbstractResponse {
-		private Integer subCategoryID;
+		private Long subCategoryID;
 
 		/**
 		 * Construct a response by parsing the necessary values out of the JSON
@@ -149,7 +149,7 @@ public class Create extends AbstractMethod {
 
 			try {
 				responseObject = new JSONObject(responseText);
-				subCategoryID = JSONUtils.getIntegerSafely(responseObject
+				subCategoryID = JSONUtils.getLongSafely(responseObject
 						.getJSONObject("SubCategory"), "id");
 			} catch (JSONException e) {
 				RuntimeJSONException rje = new RuntimeJSONException(e);
@@ -169,7 +169,7 @@ public class Create extends AbstractMethod {
 		 * 
 		 * @return the ID of the subcategory that was created.
 		 */
-		public Integer getSubCategoryID() {
+		public Long getSubCategoryID() {
 			return subCategoryID;
 		}
 	}

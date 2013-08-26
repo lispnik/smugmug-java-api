@@ -134,7 +134,7 @@ public class ReSort extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public ReSortResponse execute(String url, String apiKey, String sessionID,
-			Integer albumID, String by, String direction) {
+			Long albumID, String by, String direction) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(albumID), by, direction });
 	}

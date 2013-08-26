@@ -55,13 +55,13 @@ public class Get extends
 
 	@Override
 	public GetResponse execute(String url, String apiKey, String sessionID,
-			Integer categoryID) {
+			Long categoryID) {
 		return execute(url, apiKey, sessionID, categoryID, null, null);
 	}
 
 	@Override
 	public GetResponse execute(String url, String apiKey, String sessionID,
-			Integer categoryID, String nickName, String sitePassword) {
+			Long categoryID, String nickName, String sitePassword) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(categoryID), nickName, sitePassword });
 	}

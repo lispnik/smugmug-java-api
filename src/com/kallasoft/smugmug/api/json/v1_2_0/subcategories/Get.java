@@ -116,7 +116,7 @@ public class Get extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetResponse execute(String url, String apiKey, String sessionID,
-			Integer categoryID) {
+			Long categoryID) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(categoryID) });
 	}
@@ -147,7 +147,7 @@ public class Get extends AbstractMethod {
 	 * @see #execute(String, String[])
 	 */
 	public GetResponse execute(String url, String apiKey, String sessionID,
-			Integer categoryID, String nickName, String sitePassword) {
+			Long categoryID, String nickName, String sitePassword) {
 		return execute(url, new String[] { apiKey, sessionID,
 				APIUtils.toString(categoryID), nickName, sitePassword });
 	}
